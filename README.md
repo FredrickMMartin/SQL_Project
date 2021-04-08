@@ -3,6 +3,7 @@
 
 This was a project that I completed under supervision from my mentor and is uploaded to evidence my competency in the skills that were worked on. 
 
+### General project Goals
 The overall goals of the project were to:
 
 1. design an appropriate structure for a relational databse to store a given company's sales data
@@ -10,6 +11,7 @@ The overall goals of the project were to:
 3. query the databse to provide informative answers to requested questions
 4. set up scheduled events and triggers to aid in maintenance of the database
 
+### Specific requirements
 The specific requirements of the project are laid out below.
 1. Create an Entity-Relationship Model (ERM) diagram, including a description of the entities, their attributes, and relationships. (draw.io)
 
@@ -34,7 +36,7 @@ The specific requirements of the project are laid out below.
     1. Create a trigger to increment  “nOrders” for each customer when a purchase of theirs is added to the Orders table
     2. Create an Event Scheduler to run daily and check (and correct if needed) the values of "nOrders"
 
-
+### Uploaded Material
 My responses to these requirements are in the files numbered 1 - 4. 
 
 The sql code to recreate the database in MySQL in one fell swoop (this takes a little time) is in file 0. 
