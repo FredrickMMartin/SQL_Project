@@ -42,3 +42,6 @@ My responses to these requirements are in the files numbered 1 - 4.
 The sql code to recreate the database in MySQL in one fell swoop (this takes a little time) is in file 0. 
 
 The csv file containing the data that I was presented with is uplodaded as well. 
+
+### Comments
+Please feel free to message me your thoughts or make any pull requests that you feel would benefit this work. 
