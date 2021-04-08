@@ -74,38 +74,8 @@ JOIN customer AS C
 ON C.CustomerID = O.CustomerID
 WHERE OL.ProfitRatio < 0
 
-"""adding nOrders column""""
 
-ALTER TABLE customer
-ADD nOrders int;
-
-"""updating customer table"""
-
-CREATE TEMPORARY TABLE orders_nums  
-(SELECT C.customerID AS customerID, COUNT(*) AS nOrders
-FROM customer AS C
-JOIN orders AS O
-ON O.CustomerID = C.CustomerID
-GROUP BY C.customerID)
-
-UPDATE customer AS Cu, orders_nums AS O 
-SET Cu.nOrders = O.nOrders 
-WHERE Cu.CustomerID = O.CustomerID
-
-"""adding is_top_customer column""""
-
-ALTER TABLE customer
-ADD is_top_customer bool;
-
-"""updating is_top_customer column""""
-
-UPDATE customer
-SET is_top_customer = CASE
-WHEN nOrders >= 10 THEN TRUE
-ELSE FALSE
-END
-
-"""3. v. returning manufacturer revenue per year and segment, variables: manufacturer1""""
+"""3. v. returning manufacturer revenue per year and segment, variables: manufacturer1"""
 
 SELECT YEAR(O.OrderDate), CS.CustomerSegment, SUM(OL.Sale)
 FROM orderline as OL
@@ -122,7 +92,7 @@ ON M.ManufacturerID = P.ManufacturerID
 WHERE M.Manufacturer = manufacturer1
 GROUP BY YEAR(O.OrderDate), CS.CustomerSegment
 
-"""3. vi. creating view category_segment_sales""""
+"""3. vi. creating view category_segment_sales"""
 
 CREATE VIEW category_segment_sales AS 
 SELECT YEAR(O.OrderDate) AS Year, MONTH(O.OrderDate) AS Month, PC.ProductCategory AS Product_Category, CS.CustomerSegment AS Segment, COUNT(*) as nOders, SUM(sale) AS Revenue
@@ -140,18 +110,6 @@ ON PS.ProductSubcategoryID = P.ProductSubcategoryID
 JOIN productcategory AS PC
 ON PC.ProductCategoryID = PS.ProductCategoryID
 GROUP BY Year, Month, Product_Category, Segment;
-
-"""creating after_orders_insert trigger"""
-
-DELIMITER $$
-CREATE TRIGGER after_orders_insert
-AFTER INSERT
-ON orders FOR EACH ROW
-BEGIN
-UPDATE customer
-SET nOrders = nOrders + 1
-WHERE CustomerID = NEW.CustomerID;
-END$$
 
 
 
