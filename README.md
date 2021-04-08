@@ -1,8 +1,10 @@
 # SQL_Project
 #### Creating and querying a database from store data.
 
-This was a project that I completed under supervision from my mentor.
+This was a project that I completed under supervision from my mentor and is uploaded to evidence my competency in the skills that were worked on. 
+
 The overall goals of the project were to:
+
 1. design an appropriate structure for a relational databse to store a given company's sales data
 2. set up said relational database using MySQL  
 3. query the databse to provide informative answers to requested questions
