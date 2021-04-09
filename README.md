@@ -1,4 +1,4 @@
-# SQL_Project
+# SQL_Sales_Data
 #### Creating and querying a database from store data.
 
 This was a project that I completed under supervision from my mentor and is uploaded to evidence my competency in the skills that were worked on. 
